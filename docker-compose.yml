@@ -1,0 +1,17 @@
+version: '2'
+ 
+services:
+  app:
+    build:
+      context:  ./voteapp
+    expose:
+      - "80"
+ 
+  proxy:
+    build:
+      context:  ./nginx
+    expose:
+      - "88"
+      - "443"
+    links:
+      - app
